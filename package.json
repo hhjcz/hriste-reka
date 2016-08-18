@@ -4,10 +4,11 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "build": "webpack",
-        "test": "echo \"Error: no test specified\" && exit 1",
         "dev": "webpack-dev-server --inline",
-        "prod": "DEBUG=express:* node src/server"
+        "build": "webpack",
+        "prod": "node server",
+        "clean": "rm dist/*",
+        "test": "echo \"Error: no test specified\" && exit 1"
     },
     "keywords": [],
     "author": "",
