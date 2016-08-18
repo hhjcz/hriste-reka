@@ -1,34 +1,37 @@
 {
-    "name": "react-redux-scratch",
-    "version": "1.0.0",
-    "description": "",
-    "main": "index.js",
-    "scripts": {
-        "dev": "webpack-dev-server --inline",
-        "build": "webpack",
-        "prod": "node server",
-        "clean": "rm dist/*",
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "keywords": [],
-    "author": "",
-    "license": "ISC",
-    "devDependencies": {
-        "autoprefixer-loader": "^3.2.0",
-        "babel-cli": "^6.11.4",
-        "babel-core": "^6.13.2",
-        "babel-loader": "^6.2.5",
-        "babel-preset-es2015": "^6.13.2",
-        "babel-preset-react": "^6.11.1",
-        "css-loader": "^0.23.1",
-        "node-sass": "^3.8.0",
-        "sass-loader": "^4.0.0",
-        "style-loader": "^0.13.1",
-        "webpack": "^1.13.2",
-        "webpack-dev-server": "^1.14.1"
-    },
-    "dependencies": {
-        "babel-register": "^6.11.6",
-        "express": "^4.14.0"
-    }
+  "name": "react-redux-scratch",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack-dev-server --inline",
+    "build": "webpack",
+    "prod": "node server",
+    "clean": "rm dist/*",
+    "test": "mocha --compilers js:babel-core/register --require test_helper.js --watch-extensions jsx src/**/*.spec.js*",
+    "test:watch": "npm run test -- --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer-loader": "^3.2.0",
+    "babel-cli": "^6.11.4",
+    "babel-core": "^6.13.2",
+    "babel-loader": "^6.2.5",
+    "babel-preset-es2015": "^6.13.2",
+    "babel-preset-react": "^6.11.1",
+    "chai": "^3.5.0",
+    "css-loader": "^0.23.1",
+    "mocha": "^3.0.2",
+    "node-sass": "^3.8.0",
+    "sass-loader": "^4.0.0",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.13.2",
+    "webpack-dev-server": "^1.14.1"
+  },
+  "dependencies": {
+    "babel-register": "^6.11.6",
+    "express": "^4.14.0"
+  }
 }
