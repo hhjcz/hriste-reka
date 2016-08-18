@@ -18,10 +18,10 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['', 'js', 'jsx']
+    extensions: ['', '.js', '.jsx']
   },
   output: {
-    path: __dirname + '/public',
+    path: __dirname + '/dist',
     filename: 'bundle.js',
     publicPath: '/'
   },
