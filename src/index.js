@@ -1,11 +1,9 @@
 /** Created by hhj on 8/18/16. */
-import "./main.scss"
-const world = 'world!'
+import React from  'react'
+import ReactDOM from 'react-dom'
+import App from './App'
 
-/**
- * @param {string} world
- * @returns {string}
- */
-export function hello(world) {
-  return `Hello ${world}`
-}
+ReactDOM.render(
+  <App />,
+  document.getElementById('react-view')
+)
