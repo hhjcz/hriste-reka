@@ -1,5 +1,5 @@
 /** Created by hhj on 8/18/16. */
-import React from  'react'
+import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './App'
 
