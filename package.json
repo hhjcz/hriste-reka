@@ -13,7 +13,7 @@
     "build": "webpack",
     "clean": "rm dist/*",
     "eslint": "eslint --ext=js --ext=jsx src",
-    "test": "mocha --compilers js:babel-core/register --require test_helper.js --watch-extensions jsx src/**/*.spec.js*",
+    "test": "mocha --compilers js:babel-core/register --require test_helper.js --recursive --watch-extensions jsx 'src/**/*.spec.js*'",
     "test:watch": "npm run test -- --watch"
   },
   "keywords": [],
@@ -47,6 +47,8 @@
     "node-sass": "^3.8.0",
     "react": "^15.3.0",
     "react-dom": "^15.3.0",
+    "react-redux": "^4.4.5",
+    "redux": "^3.5.2",
     "sass-loader": "^4.0.0",
     "style-loader": "^0.13.1",
     "webpack": "^1.13.2"
