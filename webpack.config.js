@@ -8,6 +8,14 @@ module.exports = {
     'webpack/hot/only-dev-server',
     './src/index.js'
   ],
+  resolve: {
+    extensions: ['', '.js', '.jsx']
+  },
+  output: {
+    path: path.join(__dirname, 'dist'),
+    filename: 'bundle.js',
+    publicPath: '/'
+  },
   module: {
     loaders: [
       {
@@ -25,14 +33,8 @@ module.exports = {
       }
     ]
   },
-  resolve: {
-    extensions: ['', '.js', '.jsx']
-  },
-  output: {
-    path: path.join(__dirname, 'dist'),
-    filename: 'bundle.js',
-    publicPath: '/'
-  },
+  // see http://webpack.github.io/docs/configuration.html#devtool
+  devtool: 'cheap-module-eval-source-map',
   devServer: {
     contentBase: './public',
     hot: true
