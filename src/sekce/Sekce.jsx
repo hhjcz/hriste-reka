@@ -8,16 +8,26 @@ export class Sekce extends React.Component {
   static propTypes = {
     hodnota: PropTypes.number.isRequired,
     increment: PropTypes.func.isRequired,
+    decrement: PropTypes.func.isRequired,
   };
 
   static defaultProps = {};
+
+  componentDidMount() {
+    this.timer = setInterval(this.props.increment, 1000)
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timer)
+  }
 
   render() {
     connect(this.props)
     const { hodnota, increment, decrement } = this.props
     return (
       <div>
-        <span>A máme tu: {hodnota} </span>
+        <span>A máme tu</span>
+        <span> {hodnota} </span>
         <button onClick={increment}>+</button>
         <button onClick={decrement}>-</button>
       </div>

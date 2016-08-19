@@ -3,7 +3,7 @@ import { Record } from 'immutable'
 import * as actions from './actions'
 
 export const InitialState = Record({
-  hodnota: 66
+  hodnota: 1
 })
 
 const reducer = (state = {}, action = {}) => {
