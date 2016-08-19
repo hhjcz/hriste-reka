@@ -1,5 +1,6 @@
 /** Created by hhj on 8/19/16. */
 import React, { PropTypes } from 'react'
+import Sekce from './sekce/Sekce'
 
 export default class App extends React.Component {
   static propTypes = {};
@@ -14,9 +15,14 @@ export default class App extends React.Component {
   render() {
     const { header } = this.state
     return (
-      <h1>
-        {header}
-      </h1>
+      <div>
+        <h1>
+          {header}
+        </h1>
+        <section>
+          <Sekce />
+        </section>
+      </div>
     )
   }
 }
