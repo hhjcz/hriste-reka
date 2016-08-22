@@ -9,7 +9,7 @@ export default class App extends React.Component {
 
   constructor(props) {
     super(props)
-    this.state = { header: `${String.fromCharCode(0x2620)} kostra tě nůžkama...` }
+    this.state = { header: `${String.fromCharCode(0x2620)} kostra tě nůžkama... (${process.env.NODE_ENV})` }
   }
 
   render() {

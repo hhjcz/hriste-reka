@@ -22,7 +22,7 @@ if (isDevelopment) {
   app.use(webpackHotMiddleware(compiler));
 }
 
-app.use('/', express.static(path.join(__dirname, 'public')))
-app.use('/', express.static(path.join(__dirname, 'dist')))
+app.use('/', express.static(path.join(__dirname, '../public')))
+app.use('/', express.static(path.join(__dirname, '../dist')))
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`))

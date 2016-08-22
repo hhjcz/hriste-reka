@@ -6,7 +6,7 @@ const webpack = require('webpack')
 const makeWebpackConfig = require('./makeWebpackConfig')
 
 const isDevelopment = process.env.NODE_ENV !== 'production'
-const compiler = webpack(makeWebpackConfig({ isDevelopment }))
+const compiler = webpack(makeWebpackConfig({ isDevelopment, hotReload: false }))
 
 function handleError(error) {
   console.error('Webpack build error: ', error)

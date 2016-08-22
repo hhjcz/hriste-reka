@@ -3,27 +3,28 @@ import path from 'path'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
 import autoprefixer from 'autoprefixer'
 
-export default function makeWebpackConfig(options = { isDevelopment: false }) {
+export default function makeWebpackConfig(options = { isDevelopment: false, hotReload: true }) {
 
-  const { isDevelopment } = options
+  const { isDevelopment, hotReload } = options
   console.info(`Webpacking... (NODE_ENV=${process.env.NODE_ENV}, isDevelopment=${isDevelopment})`)
 
   const prefixLoaders = 'style-loader!css-loader!postcss-loader'
 
   const config = {
     entry: {
-      app: isDevelopment ? [
-        'webpack-hot-middleware/client',
-        './src/index.js'
-      ] : [
-        './src/index.js'
-      ]
+      app: (() => {
+        const entries = ['./src/index.js']
+        if (isDevelopment && hotReload) {
+          entries.push('webpack-hot-middleware/client')
+        }
+        return entries
+      })()
     },
     resolve: {
       extensions: ['', '.js', '.jsx']
     },
     output: {
-      path: path.join(__dirname, 'dist'),
+      path: path.join(__dirname, '../dist'),
       filename: '[name].js',
       chunkFilename: '[name]-[hash].js',
       publicPath: '/'
@@ -40,7 +41,7 @@ export default function makeWebpackConfig(options = { isDevelopment: false }) {
             plugins: ['add-module-exports'],
             env: {
               development: {
-                presets: ['react-hmre'],
+                presets: hotReload ? ['react-hmre'] : [],
               },
               production: {
                 plugins: [/* 'transform-react-constant-elements', */],
@@ -78,9 +79,13 @@ export default function makeWebpackConfig(options = { isDevelopment: false }) {
       if (isDevelopment) {
         plugins.push(
           new webpack.optimize.OccurenceOrderPlugin(),
-          new webpack.HotModuleReplacementPlugin(),
           new webpack.NoErrorsPlugin()
         )
+        if (hotReload) {
+          plugins.push(
+            new webpack.HotModuleReplacementPlugin()
+          )
+        }
       } else {
         plugins.push(
           new ExtractTextPlugin('main.css'),

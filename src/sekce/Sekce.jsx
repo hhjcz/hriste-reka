@@ -9,6 +9,7 @@ export class Sekce extends React.Component {
     hodnota: PropTypes.number.isRequired,
     increment: PropTypes.func.isRequired,
     decrement: PropTypes.func.isRequired,
+    assertReactWarnings: PropTypes.bool.isRequired,
   };
 
   static defaultProps = {};
