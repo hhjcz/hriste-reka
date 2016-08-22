@@ -23,7 +23,7 @@ export default function makeWebpackConfig(options = { isDevelopment: false }) {
       extensions: ['', '.js', '.jsx']
     },
     output: {
-      path: path.join(__dirname, 'dist'),
+      path: path.join(__dirname, '../dist'),
       filename: '[name].js',
       chunkFilename: '[name]-[hash].js',
       publicPath: '/'
