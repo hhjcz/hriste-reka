@@ -5,7 +5,7 @@ const makeWebpackConfig = require('./makeWebpackConfig')
 const loadEnv = require('./loadEnv')
 
 loadEnv()
-const isDevelopment = process.env.NODE_ENV !== 'production'
+const isDevelopment = process.env.NODE_ENV === 'development'
 
 function handleError(error) {
   console.error('Webpack build error: ', error)

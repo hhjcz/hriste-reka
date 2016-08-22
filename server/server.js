@@ -6,7 +6,7 @@ const loadEnv = require('./loadEnv')
 
 loadEnv()
 const PORT = process.env.PORT || 8080 // e.g. heroku.com sets env.PORT
-const isDevelopment = process.env.NODE_ENV !== 'production'
+const isDevelopment = process.env.NODE_ENV === 'development'
 
 const app = express()
 
