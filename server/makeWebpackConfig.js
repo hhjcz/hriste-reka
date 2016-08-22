@@ -14,6 +14,11 @@ export default function makeWebpackConfig(options = { isDevelopment: false }) {
 
   const prefixLoaders = 'style-loader!css-loader!postcss-loader'
 
+  const babelPresets = isDevelopment ? ['react-hmre'] : []
+
+  const babelPlugins = ['add-module-exports']
+  if (!isDevelopment) babelPlugins.push(/* 'transform-react-constant-elements', */)
+
   const config = {
     entry: {
       app: isDevelopment ? [
@@ -38,18 +43,11 @@ export default function makeWebpackConfig(options = { isDevelopment: false }) {
           test: /\.jsx?$/,
           exclude: /node_modules/,
           loader: 'babel',
-          // babel query - merged with .babelrc:
+          // babel query, merged with .babelrc:
           query: {
             cacheDirectory: true,
-            plugins: ['add-module-exports'],
-            env: {
-              development: {
-                presets: ['react-hmre'],
-              },
-              production: {
-                plugins: [/* 'transform-react-constant-elements', */],
-              },
-            },
+            presets: babelPresets,
+            plugins: babelPlugins,
           },
         },
         {
