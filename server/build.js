@@ -2,7 +2,7 @@
 require('babel-register')({})
 const webpack = require('webpack')
 const makeWebpackConfig = require('./makeWebpackConfig')
-const loadEnv = require('./loadEnv')()
+const loadEnv = require('./loadEnv')
 
 loadEnv()
 const isDevelopment = process.env.NODE_ENV !== 'production'
