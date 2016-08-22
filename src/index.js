@@ -9,6 +9,16 @@ import reducer from './reducer'
 const initialState = {}
 const store = configureStore(initialState, reducer)
 
+// hot reload root reducer (enables hot reloading action creators modules as well)
+if (module.hot) {
+  module.hot.accept('./reducer', () => {
+    console.log('Replacing store reducer')
+    const nextReducer = require('./reducer').default
+
+    store.replaceReducer(nextReducer)
+  })
+}
+
 ReactDOM.render(
   <Provider store={store}>
     <App />
