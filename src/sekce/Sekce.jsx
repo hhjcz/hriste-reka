@@ -31,6 +31,9 @@ export class Sekce extends React.Component {
         <span> {hodnota} </span>
         <button onClick={increment}>+</button>
         <button onClick={decrement}>-</button>
+        <div>
+          <img alt="50x50 placeholder" src={require('./50x50.png')} />
+        </div>
       </div>
     )
   }
