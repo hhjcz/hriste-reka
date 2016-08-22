@@ -1,5 +1,6 @@
 /** Created by hhj on 8/19/16. */
 import React, { PropTypes } from 'react'
+import './main.scss'
 import Sekce from './sekce/Sekce'
 
 export default class App extends React.Component {
