@@ -11,7 +11,7 @@ const isDevelopment = process.env.NODE_ENV !== 'production'
 const app = express()
 
 // dev & hot middleware (in dev only - packages may not be installed at all):
-if (isDevelopment || true) {
+if (isDevelopment) {
   try {
     const webpack = require('webpack')
     const webpackDevMiddleware = require('webpack-dev-middleware')
