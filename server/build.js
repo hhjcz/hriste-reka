@@ -1,12 +1,11 @@
 /** Created by hhj on 8/22/16. */
 require('babel-register')({})
-require('./loadEnv')()
 const webpack = require('webpack')
-
 const makeWebpackConfig = require('./makeWebpackConfig')
+const loadEnv = require('./loadEnv')()
 
+loadEnv()
 const isDevelopment = process.env.NODE_ENV !== 'production'
-const compiler = webpack(makeWebpackConfig({ isDevelopment }))
 
 function handleError(error) {
   console.error('Webpack build error: ', error)
@@ -17,6 +16,8 @@ function handleWarning(warning) {
   console.warn('Webpack build warning: ', warning)
   return warning
 }
+
+const compiler = webpack(makeWebpackConfig({ isDevelopment }))
 
 compiler.run((err, stats) => {
   if (err) return handleError(err)

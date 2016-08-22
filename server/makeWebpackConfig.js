@@ -3,6 +3,10 @@ import path from 'path'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
 import autoprefixer from 'autoprefixer'
 
+/**
+ * @param {Object} options
+ * @returns {Object} config
+ */
 export default function makeWebpackConfig(options = { isDevelopment: false }) {
 
   const { isDevelopment } = options
