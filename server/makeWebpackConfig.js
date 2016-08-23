@@ -1,4 +1,5 @@
 import webpack from 'webpack'
+import fs from 'fs'
 import path from 'path'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
 import autoprefixer from 'autoprefixer'
@@ -13,11 +14,24 @@ export default function makeWebpackConfig(options = { isDevelopment: false, useC
   const { isDevelopment, useCssModules } = options
   console.info(`Webpacking... (NODE_ENV=${process.env.NODE_ENV}, isDevelopment=${isDevelopment})`)
 
+  // resolve aliases (e.g. local libraries in development), onnly in devel and when path exists
+  const resolveAliases = {
+    '@hhjcz/react-lib/lib': path.resolve('../..', 'react-lib/src'),
+  }
+  const validAliases = {}
+  if (isDevelopment) {
+    Object.keys(resolveAliases)
+      .filter(alias => fs.existsSync(resolveAliases[alias]))
+      .forEach(alias => { validAliases[alias] = resolveAliases[alias] })
+    console.log('Resolve aliases:', validAliases)
+  }
+
   // babel
+  // absolute path required when using modules outside of project root, hhj:
   const babelPresets = isDevelopment
     ? [path.join(constants.NODE_MODULES_DIR, 'babel-preset-react-hmre')]
     : []
-  const babelPlugins = ['add-module-exports']
+  const babelPlugins = [path.join(constants.NODE_MODULES_DIR, 'babel-plugin-add-module-exports')]
   if (!isDevelopment) babelPlugins.push(/* 'transform-react-constant-elements', */)
 
   // stylesheets
@@ -52,10 +66,7 @@ export default function makeWebpackConfig(options = { isDevelopment: false, useC
       root: [constants.BASE_DIR],
       extensions: ['', '.js', '.jsx'],
       modulesDirectories: ['node_modules', 'src'],
-      alias: {
-        // example aliasing local library (in development), hhj:
-        '@hhjcz/react-lib/lib': path.resolve('..', 'react-lib/src'),
-      },
+      alias: validAliases,
     },
     resolveLoader: { // required when using modules outside of root dir:
       root: [constants.NODE_MODULES_DIR],
