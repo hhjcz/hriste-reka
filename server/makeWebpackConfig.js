@@ -1,4 +1,5 @@
 import webpack from 'webpack'
+import path from 'path'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
 import autoprefixer from 'autoprefixer'
 import constants from './constants'
@@ -13,7 +14,9 @@ export default function makeWebpackConfig(options = { isDevelopment: false, useC
   console.info(`Webpacking... (NODE_ENV=${process.env.NODE_ENV}, isDevelopment=${isDevelopment})`)
 
   // babel
-  const babelPresets = isDevelopment ? ['react-hmre'] : []
+  const babelPresets = isDevelopment
+    ? [path.join(constants.NODE_MODULES_DIR, 'babel-preset-react-hmre')]
+    : []
   const babelPlugins = ['add-module-exports']
   if (!isDevelopment) babelPlugins.push(/* 'transform-react-constant-elements', */)
 
@@ -46,7 +49,18 @@ export default function makeWebpackConfig(options = { isDevelopment: false, useC
       hriste: ['./src/hriste.js']
     },
     resolve: {
-      extensions: ['', '.js', '.jsx']
+      root: [constants.BASE_DIR],
+      extensions: ['', '.js', '.jsx'],
+      modulesDirectories: ['node_modules', 'src'],
+      alias: {
+        // example aliasing local library (in development), hhj:
+        '@hhjcz/react-lib/lib': path.resolve('..', 'react-lib/lib'),
+      },
+    },
+    resolveLoader: { // required when using modules outside of root dir:
+      root: [constants.NODE_MODULES_DIR],
+      fallback: [constants.NODE_MODULES_DIR],
+      modulesDirectories: ['node_modules'],
     },
     output: {
       path: constants.BUILD_DIR,
