@@ -23,7 +23,7 @@ export default function makeWebpackConfig(options = { isDevelopment: false, useC
     Object.keys(resolveAliases)
       .filter(alias => fs.existsSync(resolveAliases[alias]))
       .forEach(alias => { validAliases[alias] = resolveAliases[alias] })
-    console.log('Resolve aliases:', validAliases)
+    console.info('Webpack resolve aliases:', validAliases)
   }
 
   // babel
