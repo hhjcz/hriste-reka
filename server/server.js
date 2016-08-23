@@ -4,6 +4,7 @@ const express = require('express')
 const path = require('path')
 const loadEnv = require('./loadEnv')
 const constants = require('./constants')
+const render = require('./render')
 
 loadEnv()
 const PORT = process.env.PORT || 8080 // e.g. heroku.com sets env.PORT
@@ -27,7 +28,9 @@ if (isDevelopment) {
   }
 }
 
-app.use('/', express.static(constants.PUBLIC_DIR))
-app.use('/', express.static(constants.BUILD_DIR))
+const staticOptions = { maxAge: '200d' }
+app.use('/', express.static(constants.PUBLIC_DIR, staticOptions))
+app.use('/', express.static(constants.BUILD_DIR, staticOptions))
+// app.get('/', render({ isDevelopment }))
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`))
