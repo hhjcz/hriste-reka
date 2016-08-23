@@ -3,6 +3,7 @@ require('babel-register')({})
 const express = require('express')
 const path = require('path')
 const loadEnv = require('./loadEnv')
+const constants = require('./constants')
 
 loadEnv()
 const PORT = process.env.PORT || 8080 // e.g. heroku.com sets env.PORT
@@ -26,7 +27,7 @@ if (isDevelopment) {
   }
 }
 
-app.use('/', express.static(path.join(__dirname, '../public')))
-app.use('/', express.static(path.join(__dirname, '../dist')))
+app.use('/', express.static(constants.PUBLIC_DIR))
+app.use('/', express.static(constants.DIST_DIR))
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`))
