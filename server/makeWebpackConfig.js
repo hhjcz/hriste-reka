@@ -54,7 +54,7 @@ export default function makeWebpackConfig(options = { isDevelopment: false, useC
       modulesDirectories: ['node_modules', 'src'],
       alias: {
         // example aliasing local library (in development), hhj:
-        '@hhjcz/react-lib/lib': path.resolve('..', 'react-lib/lib'),
+        '@hhjcz/react-lib/lib': path.resolve('..', 'react-lib/src'),
       },
     },
     resolveLoader: { // required when using modules outside of root dir:
