@@ -7,17 +7,33 @@ import autoprefixer from 'autoprefixer'
  * @param {Object} options
  * @returns {Object} config
  */
-export default function makeWebpackConfig(options = { isDevelopment: false }) {
+export default function makeWebpackConfig(options = { isDevelopment: false, useCssModules: true }) {
 
-  const { isDevelopment } = options
+  const { isDevelopment, useCssModules } = options
   console.info(`Webpacking... (NODE_ENV=${process.env.NODE_ENV}, isDevelopment=${isDevelopment})`)
 
-  const prefixLoaders = 'style-loader!css-loader!postcss-loader'
-
+  // babel
   const babelPresets = isDevelopment ? ['react-hmre'] : []
-
   const babelPlugins = ['add-module-exports']
   if (!isDevelopment) babelPlugins.push(/* 'transform-react-constant-elements', */)
+
+  // stylesheets
+  const suffixLoaders = {
+    css: '',
+    scss: '!sass',
+    sass: '!sass?indentedSyntax',
+  }
+  const styleLoaders = Object.keys(suffixLoaders).map(suffix => {
+    const cssModules = useCssModules ? '?modules' : ''
+    const suffixLoader = `css-loader${cssModules}!postcss-loader${suffixLoaders[suffix]}`
+    const loader = isDevelopment
+      ? `style-loader!${suffixLoader}`
+      : ExtractTextPlugin.extract('style-loader', suffixLoader)
+    return {
+      test: new RegExp(`\\.${suffix}$`),
+      loader
+    }
+  })
 
   const config = {
     entry: {
@@ -26,7 +42,8 @@ export default function makeWebpackConfig(options = { isDevelopment: false }) {
         './src/index.js'
       ] : [
         './src/index.js'
-      ]
+      ],
+      hriste: ['./src/hriste.js']
     },
     resolve: {
       extensions: ['', '.js', '.jsx']
@@ -51,17 +68,10 @@ export default function makeWebpackConfig(options = { isDevelopment: false }) {
           },
         },
         {
-          loader: 'url-loader?limit=100000',
-          test: /\.(gif|jpg|png|woff|woff2|eot|ttf|svg)$/
+          test: /\.(gif|jpg|png|woff|woff2|eot|ttf|svg)$/,
+          loader: 'url-loader?limit=100000'
         },
-        {
-          test: /\.css$/,
-          loader: prefixLoaders
-        },
-        {
-          test: /\.scss$/,
-          loader: `${prefixLoaders}!sass`
-        }
+        ...styleLoaders
       ]
     },
     // see http://webpack.github.io/docs/configuration.html#devtool
@@ -85,7 +95,9 @@ export default function makeWebpackConfig(options = { isDevelopment: false }) {
         )
       } else {
         plugins.push(
-          new ExtractTextPlugin('main.css'),
+          new ExtractTextPlugin('[name].css', {
+            allChunks: true,
+          }),
           new webpack.optimize.DedupePlugin(),
           new webpack.optimize.OccurenceOrderPlugin(),
           new webpack.optimize.UglifyJsPlugin({

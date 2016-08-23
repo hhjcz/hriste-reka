@@ -1,6 +1,6 @@
 /** Created by hhj on 8/19/16. */
 import React, { PropTypes } from 'react'
-import './main.scss'
+import styles from './app.scss'
 import Sekce from './sekce/Sekce'
 
 export default class App extends React.Component {
@@ -17,7 +17,7 @@ export default class App extends React.Component {
     const { header } = this.state
     return (
       <div>
-        <h1>
+        <h1 className={styles.header}>
           {header}
         </h1>
         <section>

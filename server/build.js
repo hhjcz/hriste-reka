@@ -17,7 +17,7 @@ function handleWarning(warning) {
   return warning
 }
 
-const compiler = webpack(makeWebpackConfig({ isDevelopment }))
+const compiler = webpack(makeWebpackConfig({ isDevelopment, useCssModules: true }))
 
 compiler.run((err, stats) => {
   if (err) return handleError(err)

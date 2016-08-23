@@ -18,7 +18,7 @@ if (isDevelopment) {
     const webpackHotMiddleware = require('webpack-hot-middleware')
     const makeWebpackConfig = require('./makeWebpackConfig')
 
-    const compiler = webpack(makeWebpackConfig({ isDevelopment }))
+    const compiler = webpack(makeWebpackConfig({ isDevelopment, useCssModules: true }))
     app.use(webpackDevMiddleware(compiler, { noInfo: true, colors: true }));
     app.use(webpackHotMiddleware(compiler));
   } catch (e) {
