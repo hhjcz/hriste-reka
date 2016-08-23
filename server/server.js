@@ -28,6 +28,6 @@ if (isDevelopment) {
 }
 
 app.use('/', express.static(constants.PUBLIC_DIR))
-app.use('/', express.static(constants.DIST_DIR))
+app.use('/', express.static(constants.BUILD_DIR))
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`))

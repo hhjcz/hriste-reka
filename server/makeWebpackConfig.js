@@ -1,5 +1,4 @@
 import webpack from 'webpack'
-import path from 'path'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
 import autoprefixer from 'autoprefixer'
 import constants from './constants'
@@ -50,7 +49,7 @@ export default function makeWebpackConfig(options = { isDevelopment: false, useC
       extensions: ['', '.js', '.jsx']
     },
     output: {
-      path: constants.DIST_DIR,
+      path: constants.BUILD_DIR,
       filename: '[name].js',
       chunkFilename: '[name]-[hash].js',
       publicPath: '/'

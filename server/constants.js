@@ -5,6 +5,6 @@ const BASE_DIR = path.normalize(path.join(__dirname, '..'))
 
 export default {
   BASE_DIR,
-  DIST_DIR: path.join(BASE_DIR, 'dist'),
+  BUILD_DIR: path.join(BASE_DIR, 'build'),
   PUBLIC_DIR: path.join(BASE_DIR, 'public')
 }
