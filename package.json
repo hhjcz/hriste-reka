@@ -15,7 +15,10 @@
     "clean": "rm build/*",
     "eslint": "eslint --ext=js --ext=jsx src",
     "test": "mocha --compilers js:babel-core/register --require test_helper.js --recursive --watch-extensions jsx 'src/**/*.spec.js*'",
-    "test:watch": "npm run test -- --watch"
+    "test:watch": "npm run test -- --watch",
+    "e2e": "cd e2e && nightwatch",
+    "e2e-setup": "selenium-standalone install",
+    "e2e-start": "selenium-standalone start"
   },
   "keywords": [],
   "author": "",
@@ -59,7 +62,9 @@
     "eslint-plugin-jsx-a11y": "^2.1.0",
     "eslint-plugin-react": "^6.1.2",
     "mocha": "^3.0.2",
+    "nightwatch": "^0.9.8",
     "react-addons-test-utils": "^15.3.0",
+    "selenium-standalone": "^5.6.1",
     "sinon": "^1.17.5",
     "sinon-chai": "^2.8.0",
     "skin-deep": "^0.16.0",
