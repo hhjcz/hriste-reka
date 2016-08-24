@@ -1,6 +1,7 @@
 /** Created by hhj on 8/18/16. */
 require('babel-register')({})
 const express = require('express')
+const compression = require('compression')
 const path = require('path')
 const loadEnv = require('./loadEnv')
 const constants = require('./constants')
@@ -11,6 +12,7 @@ const PORT = process.env.PORT || 8080 // e.g. heroku.com sets env.PORT
 const isDevelopment = process.env.NODE_ENV === 'development'
 
 const app = express()
+app.use(compression())
 
 // dev & hot middleware (in dev only - packages may not be installed at all):
 if (isDevelopment) {
