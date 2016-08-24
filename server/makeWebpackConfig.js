@@ -68,7 +68,9 @@ export default function makeWebpackConfig(options = { isDevelopment: false, useC
       modulesDirectories: ['node_modules', 'src'],
       alias: validAliases,
     },
-    resolveLoader: { // required when using modules outside of root dir:
+    // required when using modules outside of root dir
+    // https://webpack.github.io/docs/configuration.html#module-loaders
+    resolveLoader: {
       root: [constants.NODE_MODULES_DIR],
       fallback: [constants.NODE_MODULES_DIR],
       modulesDirectories: ['node_modules'],
