@@ -5,7 +5,8 @@ const compression = require('compression')
 const path = require('path')
 const loadEnv = require('./loadEnv')
 const constants = require('./constants')
-const render = require('./render')
+const api = require('./api')
+const renderPage = require('./renderPage')
 
 loadEnv()
 const PORT = process.env.PORT || 8080 // e.g. heroku.com sets env.PORT
@@ -33,6 +34,7 @@ if (isDevelopment) {
 const staticOptions = { maxAge: '200d' }
 app.use('/', express.static(constants.PUBLIC_DIR, staticOptions))
 app.use('/', express.static(constants.BUILD_DIR, staticOptions))
-// app.get('/', render({ isDevelopment }))
+app.use('/api', api)
+app.get('*', renderPage({ isDevelopment }))
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`))
