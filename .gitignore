@@ -1,6 +1,7 @@
 dist
 build
 node_modules
+env.json
+e2e/reports
 npm-debug.log
 .idea
-e2e/reports

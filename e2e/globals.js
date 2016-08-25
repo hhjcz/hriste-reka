@@ -1,5 +1,5 @@
 /** Created by hhj on 8/24/16. */
 export default {
-  waitForConditionTimeout: 10000,
+  waitForConditionTimeout: 1000,
 }
 

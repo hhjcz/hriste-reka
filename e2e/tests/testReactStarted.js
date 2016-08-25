@@ -10,8 +10,8 @@ export default {
     //   console.log(result.value);
     // });
 
-    reactApp.expect.element('@reactView').text.to.contain('1 men went to mow')
+    reactApp.expect.element('@reactView').text.to.contain('men went to mow')
 
-    client.end()
+    // client.end()
   }
 }
