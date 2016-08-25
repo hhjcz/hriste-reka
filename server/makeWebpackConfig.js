@@ -60,7 +60,6 @@ export default function makeWebpackConfig(options = { isDevelopment: false, useC
       ] : [
         './src/index.js'
       ],
-      hriste: ['./src/hriste.js']
     },
     resolve: {
       root: [constants.BASE_DIR],
