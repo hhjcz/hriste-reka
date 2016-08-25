@@ -4,13 +4,13 @@ export default {
     const reactApp = client.page.reactApp()
     reactApp
       .navigate()
-      .waitForElementVisible('@reactView')
+      .waitForElementVisible('@reactApp')
 
     // reactApp.getText('@reactView', (result) => {
     //   console.log(result.value);
     // });
 
-    reactApp.expect.element('@reactView').text.to.contain('men went to mow')
+    reactApp.expect.element('@reactApp').text.to.contain('kostra')
 
     client.end()
   }

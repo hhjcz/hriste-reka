@@ -34,15 +34,15 @@ export class Hriste extends React.Component {
       <div style={{ padding: '2em' }}>
         <span> {hodnota} </span>
         <span>men went to mow...</span>
-        <button onClick={increment}>+</button>
+        <button id="increment" onClick={increment}>+</button>
         {
           this.state.timer ? (
-            <button onClick={this.stopTimer}>{String.fromCharCode(9612) + String.fromCharCode(9612)}</button>
+            <button id="stop" onClick={this.stopTimer}>{String.fromCharCode(9612) + String.fromCharCode(9612)}</button>
           ) : (
-            <button onClick={this.startTimer}>{String.fromCharCode(0x25b6)}</button>
+            <button id="start" onClick={this.startTimer}>{String.fromCharCode(0x25b6)}</button>
           )
         }
-        <button onClick={decrement}>-</button>
+        <button id="decrement" onClick={decrement}>-</button>
         <div>
           <img alt="50x50 placeholder" src={require('./50x50.png')} />
         </div>

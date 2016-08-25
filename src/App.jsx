@@ -16,7 +16,7 @@ export default class App extends React.Component {
   render() {
     const { header } = this.state
     return (
-      <div>
+      <div id="react-app">
         <h1 className={styles.header}>
           {header}
         </h1>

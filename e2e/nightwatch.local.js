@@ -14,14 +14,14 @@ export default {
     host: '127.0.0.1',
     port: 4444,
     cli_args: {
-      'webdriver.chrome.driver': '../node_modules/selenium-standalone/.selenium/chromedriver/2.23-x64-chromedriver'
+      'webdriver.chrome.driver': '../node_modules/selenium-standalone/.selenium/chromedriver/2.23.414361-x64-chromedriver'
     }
   },
   test_settings: {
     default: {
-      launch_url: 'https://localhost:8080',
-      selenium_port: 4444,
+      launch_url: 'http://localhost:8080',
       selenium_host: 'localhost',
+      selenium_port: 4444,
       silent: true,
       desiredCapabilities: {
         browserName: 'chrome',
@@ -29,7 +29,7 @@ export default {
         acceptSslCerts: true,
         chromeOptions: {
           args: [],
-          binary: '/usr/bin/chrome'
+          // binary: '/usr/bin/chrome'
         }
       }
     },
