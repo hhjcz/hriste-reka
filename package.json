@@ -17,8 +17,9 @@
     "test": "mocha --compilers js:babel-core/register --require test_helper.js --recursive --watch-extensions jsx 'src/**/*.spec.js*'",
     "test:watch": "npm run test -- --watch",
     "e2e": "cd e2e && nightwatch",
-    "e2e-setup": "selenium-standalone install",
-    "e2e-start": "selenium-standalone start"
+    "e2e:ci": "npm run e2e -- --env ie9,safari,firefox,chrome",
+    "e2e:setup": "selenium-standalone install",
+    "e2e:start": "selenium-standalone start"
   },
   "keywords": [],
   "author": "",

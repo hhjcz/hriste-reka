@@ -1,7 +1,6 @@
 language: node_js
 node_js:
   - "6"
-  - "5"
 script:
   - npm test
-  - npm run e2e -- -e chrome,ie9,safari
+  - npm run e2e:ci
