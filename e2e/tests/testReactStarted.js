@@ -11,5 +11,7 @@ export default {
     // });
 
     reactApp.expect.element('@reactView').text.to.contain('1 men went to mow')
+
+    client.end()
   }
 }
