@@ -12,6 +12,6 @@ export default {
 
     reactApp.expect.element('@reactView').text.to.contain('men went to mow')
 
-    // client.end()
+    client.end()
   }
 }
