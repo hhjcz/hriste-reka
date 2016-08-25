@@ -4,13 +4,13 @@ import { expect } from 'chai'
 import sinon from 'sinon'
 import React from 'react'
 import sd from 'skin-deep'
-import Connected, { Sekce } from '../Sekce'
+import Connected, { Hriste } from '../Hriste'
 import createStore from '../../configureStore'
 import { InitialState } from '../reducer'
 
-describe('Sekce component', () => {
+describe('Hriste component', () => {
   describe('inner component', () => {
-    const shallowRender = (props) => sd.shallowRender(React.createElement(Sekce, props))
+    const shallowRender = (props) => sd.shallowRender(React.createElement(Hriste, props))
 
     it('renders with default props', () => {
       const tree = shallowRender()
@@ -27,14 +27,14 @@ describe('Sekce component', () => {
   })
 
   describe('wrapper (connected) component', () => {
-    const initialState = { sekce: new InitialState() }
+    const initialState = { hriste: new InitialState() }
     const reducer = state => state
     const store = createStore(initialState, reducer)
     const shallowRender = (props) => sd.shallowRender(React.createElement(Connected, { ...props, store }))
 
     it('connects initial redux state to props', () => {
       const tree = shallowRender()
-      expect(tree.props.hodnota).to.equal(initialState.sekce.hodnota)
+      expect(tree.props.hodnota).to.equal(initialState.hriste.hodnota)
     })
 
     it('connects actions to props', () => {

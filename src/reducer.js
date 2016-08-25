@@ -1,9 +1,9 @@
 /** Created by hhj on 8/19/16. */
 import { combineReducers } from 'redux'
-import sekce from './sekce/reducer'
+import hriste from './hriste/reducer'
 
 const reducer = combineReducers({
-  sekce
+  hriste
 })
 
 export default reducer

@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as actions from './actions'
 
-export class Sekce extends React.Component {
+export class Hriste extends React.Component {
   static propTypes = {
     hodnota: PropTypes.number.isRequired,
     increment: PropTypes.func.isRequired,
@@ -52,6 +52,6 @@ export class Sekce extends React.Component {
 }
 
 export default connect(
-  state => state.sekce.toObject(),
+  state => state.hriste.toObject(),
   dispatch => bindActionCreators(actions, dispatch)
-)(Sekce)
+)(Hriste)

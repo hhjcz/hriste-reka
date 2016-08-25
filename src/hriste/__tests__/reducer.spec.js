@@ -4,7 +4,7 @@ import { expect } from 'chai'
 import reducer, { InitialState } from '../reducer'
 import * as actions from '../actions'
 
-describe('sekce reducer', () => {
+describe('hriste reducer', () => {
 
   it('returns empty initial state', () => {
     expect(reducer(null, {})).to.deep.equal(new InitialState())

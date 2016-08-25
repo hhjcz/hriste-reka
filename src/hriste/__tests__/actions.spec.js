@@ -3,7 +3,7 @@
 import { expect } from 'chai'
 import * as actions from '../actions'
 
-describe('sekce actions', () => {
+describe('hriste actions', () => {
 
   it('defines actions', () => {
     expect(typeof actions).to.equal('object')

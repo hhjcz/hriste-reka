@@ -1,7 +1,7 @@
 /** Created by hhj on 8/19/16. */
 import React, { PropTypes } from 'react'
 import styles from './app.scss'
-import Sekce from './sekce/Sekce'
+import Hriste from './hriste/Hriste'
 
 export default class App extends React.Component {
   static propTypes = {};
@@ -21,7 +21,7 @@ export default class App extends React.Component {
           {header}
         </h1>
         <section>
-          <Sekce />
+          <Hriste />
         </section>
       </div>
     )
