@@ -56,13 +56,21 @@ export default {
     },
 
     // saucelabs.com cloud selenium:
+    ie8: {
+      ...saucelabsDefaults,
+      desiredCapabilities: {
+        browserName: 'internet explorer',
+        platform: 'Windows 7',
+        version: '8.0'
+        // rest of desiredCapabalities inherited from 'default'
+      }
+    },
     ie9: {
       ...saucelabsDefaults,
       desiredCapabilities: {
         browserName: 'internet explorer',
         platform: 'Windows 7',
         version: '9.0'
-        // rest of desiredCapabalities inherited from 'default'
       }
     },
     chrome: {
@@ -70,6 +78,13 @@ export default {
       desiredCapabilities: {
         browserName: 'chrome',
         platform: 'Linux'
+      }
+    },
+    firefox: {
+      ...saucelabsDefaults,
+      desiredCapabilities: {
+        browserName: 'firefox',
+        platform: 'OS X 10.11'
       }
     },
     safari: {

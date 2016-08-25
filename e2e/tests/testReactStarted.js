@@ -4,6 +4,7 @@ export default {
     const reactApp = client.page.reactApp()
     reactApp
       .navigate()
+      .waitForElementVisible('@mainView')
       .waitForElementVisible('@reactApp')
 
     // reactApp.getText('@reactView', (result) => {

@@ -24,7 +24,7 @@ export default function(options = { isDevelopment: false }) {
 </head>
 <body>
 
-<div id="react-view"></div>
+<div id="react-view">sem to prijde</div>
 
 <script src="app.js"></script>
 

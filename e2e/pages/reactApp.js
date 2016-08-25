@@ -4,6 +4,9 @@ export default {
     return this.api.launchUrl
   },
   elements: {
+    mainView: {
+      selector: '#react-view'
+    },
     reactApp: {
       selector: '#react-app'
     }
