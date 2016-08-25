@@ -5,4 +5,4 @@ const loadEnv = require('../server/loadEnv')
 
 loadEnv(path.resolve('../env.json'))
 
-module.exports = require('./nightwatch.local')
+module.exports = require('./nightwatch.saucelabs')

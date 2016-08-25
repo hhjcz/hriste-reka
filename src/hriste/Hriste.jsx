@@ -32,7 +32,7 @@ export class Hriste extends React.Component {
     const { hodnota, increment, decrement } = this.props
     return (
       <div style={{ padding: '2em' }}>
-        <span> {hodnota} </span>
+        <span id="counter"> {hodnota} </span>
         <span>men went to mow...</span>
         <button id="increment" onClick={increment}>+</button>
         {
