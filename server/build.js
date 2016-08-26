@@ -9,7 +9,7 @@ const isDevelopment = process.env.NODE_ENV === 'development'
 
 function handleError(error) {
   console.error('Webpack build error: ', error)
-  return error
+  throw error
 }
 
 function handleWarning(warning) {
