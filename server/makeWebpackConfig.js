@@ -14,10 +14,9 @@ export default function makeWebpackConfig(options = { isDevelopment: false, useC
   const { isDevelopment, useCssModules } = options
   console.info(`Webpacking... (NODE_ENV=${process.env.NODE_ENV}, isDevelopment=${isDevelopment})`)
 
+  // resolve aliases (e.g. local libraries in development), only in devel and when path exists
   const resolveAliases = {
-    // required when using 'npm link' to prevent duplicated react
-    'react': path.resolve('./', 'node_modules/react'),
-    // '@hhjcz/react-lib/lib': path.resolve('../..', 'react-lib/src'),
+    '@hhjcz/react-lib/lib': path.resolve('../..', 'react-lib/src'),
   }
   const validAliases = {}
   if (isDevelopment) {
