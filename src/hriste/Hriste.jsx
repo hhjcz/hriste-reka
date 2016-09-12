@@ -12,9 +12,15 @@ export class Hriste extends React.Component {
     assertReactWarnings: PropTypes.bool.isRequired,
   };
 
-  static defaultProps = {};
+  static defaultProps = {
+    hodnota: 0,
+    increment: x => x,
+    decrement: x => x,
+  };
 
-  state = { timer: null }
+  state = {
+    timer: null,
+  }
 
   componentDidMount() {
     this.startTimer()
