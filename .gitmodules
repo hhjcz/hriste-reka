@@ -1,0 +1,3 @@
+[submodule "laradock_react-kostra"]
+	path = laradock_react-kostra
+	url = git@github.com:hhjcz/laradock.git
