@@ -101,7 +101,8 @@ export default function makeWebpackConfig(options = { isDevelopment: false, useC
       ]
     },
     // see http://webpack.github.io/docs/configuration.html#devtool
-    devtool: isDevelopment ? 'cheap-module-eval-source-map' : '',
+    // this works in phpstorm javascript debug (cheap-* does not)
+    devtool: isDevelopment ? 'module-eval-source-map' : '',
     debug: isDevelopment,
     plugins: (() => {
       const plugins = [
