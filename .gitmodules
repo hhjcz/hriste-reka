@@ -1,3 +1,0 @@
-[submodule "laradock_react-kostra"]
-	path = docker
-	url = https://github.com/hhjcz/laradock.git
